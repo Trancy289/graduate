@@ -1,4 +1,4 @@
-You:MCTS AI
+You:Human
 Enemy:MCTS AI
-Serial Number:0000001108
+Serial Number:0000001441
 

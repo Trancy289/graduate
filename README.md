@@ -1,4 +1,4 @@
-# gobang
+# graduate
 
 运行gobang.exe进入游戏。目录下的Config.txt为参数配置文件。玩家可选为Human，MCTS AI 或 DeepMind。
 
@@ -6,15 +6,13 @@
 
 # 如何训练？
 
-确保train文件夹下有一定量数据，然后在目录下运行:
+确保Assets/train文件夹下有一定量数据，然后在目录下运行:
 python train.py
 
-注意：请把train.py下的rootdir修改成对应的目录，并删除Train文件夹内的empty文件。
 
 #版本需求
  - Tensorflow-gpu : 1.10 以上
  - keras      ：2.1.0以上
- - cuda：10.1
+ - cuda：10.0
 
-# 更新
- - 修复了因路径错误无法保存棋局数据的问题。
+

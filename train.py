@@ -1,4 +1,10 @@
 ﻿import numpy as np
+import os
+import tensorflow as tf
+import keras.backend.tensorflow_backend as KTF
+
+os.environ['CUDA_VISIBLE_DEVICES'] = "1"
+
 
 inputs = []
 policys = []
@@ -14,7 +20,7 @@ batch_size = 20
 from net import create_model
 #create_model()
 
-rootdir = 'G:\\gobang\\Assets\\train'
+rootdir = 'G:/graduate/Assets/train'
 list = os.listdir(rootdir)
 
 bar = Bar('import progress', batch_size)

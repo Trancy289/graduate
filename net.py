@@ -6,14 +6,29 @@ from keras.optimizers import Adam,SGD
 from keras.callbacks import ModelCheckpoint
 from keras.regularizers import l2
 import h5py
+import os
+import tensorflow as tf
+import keras.backend.tensorflow_backend as KTF
+
+
+os.environ['CUDA_VISIBLE_DEVICES'] = "1"
+
 
 def create_model():
     lr = 1e-4
     policy_net = Sequential()
-    policy_net.add(Convolution2D(filters=32,kernel_size=(5,5),padding='same', data_format="channels_first", activation="relu",kernel_regularizer=l2(lr),input_shape=(4,19,19)))
-    policy_net.add(Convolution2D(filters=64,kernel_size=(3,3),padding='same', data_format="channels_first", activation="relu",kernel_regularizer=l2(lr)))
-    policy_net.add(Convolution2D(filters=128,kernel_size=(3,3),padding='same', data_format="channels_first", activation="relu",kernel_regularizer=l2(lr)))
-    policy_net.add(Convolution2D(filters=4,kernel_size=(1,1),padding='same', data_format="channels_first", activation="relu",kernel_regularizer=l2(lr)))
+    policy_net.add(Convolution2D(filters=32,kernel_size=(5,5),padding='same',
+        data_format="channels_first", activation="relu",kernel_regularizer=l2(lr),input_shape=(4,19,19)))
+
+    policy_net.add(Convolution2D(filters=64,kernel_size=(3,3),padding='same', 
+       data_format="channels_first", activation="relu",kernel_regularizer=l2(lr)))
+
+    policy_net.add(Convolution2D(filters=128,kernel_size=(3,3),padding='same',
+       data_format="channels_first", activation="relu",kernel_regularizer=l2(lr)))
+
+    policy_net.add(Convolution2D(filters=4,kernel_size=(1,1),padding='same',
+       data_format="channels_first", activation="relu",kernel_regularizer=l2(lr)))
+       
     policy_net.add(Flatten())
     policy_net.add(Dense(361,activation="softmax",kernel_regularizer=l2(lr)))
     adam = Adam(lr=2e-4)
